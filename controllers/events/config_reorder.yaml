@@ -1,0 +1,5 @@
+title: Events
+modelClass: JumpLink\EventTimeline\Models\Event
+nameFrom: title
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,67 @@
+fields:
+    title:
+        label: Titel
+        span: auto
+        placeholder: Titel
+        required: 1
+        type: text
+        commentAbove: 'der Titel der Veranstaltung'
+    type:
+        label: Veranstaltungstyp
+        options:
+            - Sonstiges
+            - Vortrag
+            - Podiumsdiskussion
+            - Reise
+            - Information
+            - Schifffahrtsessen
+        span: auto
+        default: '0'
+        required: 1
+        type: dropdown
+        commentAbove: 'Wählen Sie hier den Typ der Veranstaltung aus. Je nach Typ erscheint ein anderes Symbol auf der Timeline.'
+    subtext:
+        label: Untertitel
+        span: auto
+        type: text
+        commentAbove: 'Geben Sie optional einen Untertitel ein (wird kleiner unter dem Titel dargestellt).'
+    description:
+        label: Beschreibung
+        size: small
+        span: auto
+        type: textarea
+        commentAbove: 'ein kurzer Beschreibungstext für die Veranstaltung'
+    date_start:
+        label: Beginn
+        mode: datetime
+        span: auto
+        required: 1
+        type: datepicker
+        commentAbove: 'Datum/Uhrzeit für Beginn der Veranstaltung'
+    date_end:
+        label: Ende
+        mode: datetime
+        span: auto
+        required: 0
+        type: datepicker
+        commentAbove: 'Datum/Uhrzeit für Ende der Veranstaltung'
+    image:
+        label: Bild
+        mode: image
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+        commentAbove: 'Fügen Sie optional ein Bild zur Veranstaltung zur Darstellung auf der Timeline bei.'
+    attachment:
+        label: Anhang
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+        commentAbove: 'Hier können Sie einen Anhang (z.B. Flyer als PDF) zur Veranstaltung hinzufügen.'

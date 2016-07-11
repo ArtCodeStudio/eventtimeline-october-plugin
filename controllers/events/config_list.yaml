@@ -1,0 +1,11 @@
+title: Events
+modelClass: JumpLink\EventTimeline\Models\Event
+list: $/jumplink/eventtimeline/models/event/columns.yaml
+recordUrl: 'jumplink/eventtimeline/events/update/:id'
+noRecordsMessage: 'backend::lang.list.no_records'
+showSetup: true
+showCheckboxes: true
+toolbar:
+    buttons: list_toolbar
+    search:
+        prompt: 'backend::lang.list.search_prompt'

@@ -1,0 +1,11 @@
+plugin:
+    name: 'jumplink.eventtimeline::lang.plugin.name'
+    description: 'jumplink.eventtimeline::lang.plugin.description'
+    author: 'Moritz Raguschat (JumpLink Network)'
+    icon: oc-icon-calendar
+    homepage: 'http://jumplink.me'
+navigation:
+    evenTimeline:
+        label: 'Event Timeline'
+        url: jumplink/eventtimeline/events
+        icon: icon-calendar

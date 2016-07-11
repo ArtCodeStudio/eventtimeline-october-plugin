@@ -1,0 +1,26 @@
+columns:
+    title:
+        label: Titel
+        type: text
+        searchable: true
+        sortable: true
+    subtitle:
+        label: Untertitel
+        type: text
+        searchable: true
+        sortable: true
+    description:
+        label: Beschreibung
+        type: text
+        searchable: true
+        sortable: true
+    type:
+        label: Veranstaltungstyp
+        type: select
+        searchable: true
+        sortable: true
+    person1:
+        label: Person
+        type: text
+        searchable: true
+        sortable: true
