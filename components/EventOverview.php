@@ -29,6 +29,8 @@ class EventOverview extends ComponentBase
 
     public function onRun()
     {
-        $this->events = EventModel::all();
+        $this->events = EventModel::where('date_end', '>=', date('Y-m-d H:i:s'))
+    ->orderBy('date_start', 'asc')
+    ->get();
     }
 }
