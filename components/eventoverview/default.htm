@@ -7,7 +7,7 @@
     
     <p>
         <a href="{{veranstaltungen | page}}#event_{{ ev.id }}">{{ ev.title }}</a> 
-        am {{ event.date_start | date("m.d.Y, H:i") }} Uhr
+        am {{ ev.date_start | date("d.m.Y, H:i") }} Uhr
     </p>
 
 {% endfor %}

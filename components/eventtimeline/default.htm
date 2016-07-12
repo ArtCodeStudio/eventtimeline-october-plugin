@@ -3,7 +3,7 @@
     {% for event in __SELF__.events %}
   
         <li class="{% if loop.index is divisible by(2) %} timeline-inverted {% endif %}">
-            {# Timerine type #}
+            {# Timeline type #}
             
             {# Vortrag #}
             {% if event.type == 1 %}
@@ -116,11 +116,11 @@
                         <p class="text-muted">
                             <i class="fa fa-clock-o"></i>
                             <span>
-                                {{ event.date_start | date("m.d.Y H:i") }} Uhr
+                                {{ event.date_start | date("d.m.Y, H:i") }} Uhr
                             </span>
                             {% if event.date_end %}
                                 <span>
-                                    bis {{ event.date_end | date("m.d.Y H:i") }} Uhr
+                                    bis {{ event.date_end | date("d.m.Y, H:i") }} Uhr
                                 </span>
                             {% endif %}   
                         </p>
