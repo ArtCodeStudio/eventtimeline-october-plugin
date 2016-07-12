@@ -6,3 +6,9 @@
 1.0.3:
     - 'Updated table jumplink_eventtimeline_events'
     - builder_table_update_jumplink_eventtimeline_events.php
+1.0.4:
+    - 'Updated table jumplink_eventtimeline_events'
+    - builder_table_update_jumplink_eventtimeline_events_2.php
+1.0.5:
+    - 'Updated table jumplink_eventtimeline_events'
+    - builder_table_update_jumplink_eventtimeline_events_3.php

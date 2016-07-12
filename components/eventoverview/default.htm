@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Aktuelles</div>
+  <div class="panel-body">
+    <p> Veranstaltungen im Überblick</p>
+    
+{% for ev in __SELF__.events %}
+    
+    <p>
+        <a href="{{veranstaltungen | page}}#event_{{ ev.id }}">{{ ev.title }}</a> 
+        am {{ event.date_start | date("m.d.Y, H:i") }} Uhr
+    </p>
+
+{% endfor %}
+  </div>
+</div>
