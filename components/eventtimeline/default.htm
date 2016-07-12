@@ -52,6 +52,11 @@
                     {% if event.title %}
                         <h4 class="timeline-title">
                             {{ event.title }}
+                            {% if event.subtitle %}
+                                <small>
+                                    {{ event.subtitle }}
+                                </small>
+                            {% endif %}   
                         </h4>
                     {% endif %}
                     
@@ -131,16 +136,16 @@
                     {% endif %}  
                 </div>
                 <div class="timeline-body">
+                    {% if event.image %}
+                        <img src="{{ event.image.path | app }}" alt="{{ event.image.title }}" class="img-responsive center-block m-t-1">
+                    {% endif %}
                     {% if event.description %}
-                        <p>
+                        <p class="p-x-1">
                             {{ event.description }}
-                            {% if event.image%}
-                                <img src="{{event.image.path | app}}">
-                            {% endif %}
                         </p>
                     {% endif %}  
                     {% if event.attachment %}
-                        <p>
+                        <p class="m-x-1">
                             <a href="{{event.attachment.path | app}}" class="btn btn-info">Weitere Informationen</a>
                         </p>
                     {% endif %}  
