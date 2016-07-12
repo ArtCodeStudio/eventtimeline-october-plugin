@@ -12,6 +12,14 @@ class Plugin extends PluginBase
         ];
     }
 
+    public function registerPageSnippets()
+    {
+	    return [
+	       '\JumpLink\EventTimeline\Components\EventTimeline' => 'eventtimeline',
+	       '\JumpLink\EventTimeline\Components\EventOverview' => 'eventoverview',
+	    ];
+    }
+
     public function registerSettings()
     {
     }
