@@ -8,7 +8,7 @@ tabs:
             required: 1
             type: text
             commentAbove: 'der Titel der Veranstaltung'
-            tab: 'Tab 1'
+            tab: Rahmendaten
         type:
             label: Veranstaltungstyp
             options:
@@ -23,42 +23,44 @@ tabs:
             required: 1
             type: dropdown
             commentAbove: 'Wählen Sie hier den Typ der Veranstaltung aus. Je nach Typ erscheint ein anderes Symbol auf der Timeline.'
-            tab: 'Tab 1'
+            tab: Rahmendaten
         subtitle:
             label: Untertitel
             span: auto
             type: text
             commentAbove: 'Geben Sie optional einen Untertitel ein (wird kleiner unter dem Titel dargestellt).'
-            tab: 'Tab 1'
+            tab: Rahmendaten
+        location:
+            label: Ort
+            span: auto
+            type: text
+            comment: 'der Ort der Veranstaltung'
+            tab: Rahmendaten
         date_start:
             label: Beginn
             mode: datetime
             span: auto
             required: 1
             type: datepicker
+            format: DD.MM.YYYY
             commentAbove: 'Datum/Uhrzeit für Beginn der Veranstaltung'
-            tab: 'Tab 1'
+            tab: Rahmendaten
         date_end:
             label: Ende
             mode: datetime
             span: auto
             required: 0
             type: datepicker
+            format: DD.MM.YYYY
             commentAbove: 'Datum/Uhrzeit für Ende der Veranstaltung'
-            tab: 'Tab 1'
-        location:
-            label: Ort
-            span: auto
-            type: text
-            comment: 'der Ort der Veranstaltung'
-            tab: 'Tab 1'
+            tab: Rahmendaten
         description:
             label: Beschreibung
             size: small
             span: auto
             type: textarea
             commentAbove: 'ein kurzer Beschreibungstext für die Veranstaltung'
-            tab: 'Tab 2'
+            tab: Beschreibung
         image:
             label: Bild
             mode: image
@@ -69,7 +71,7 @@ tabs:
             span: auto
             type: fileupload
             commentAbove: 'Fügen Sie optional ein Bild zur Veranstaltung zur Darstellung auf der Timeline bei.'
-            tab: 'Tab 2'
+            tab: Beschreibung
         attachment:
             label: Anhang
             mode: file
@@ -80,40 +82,46 @@ tabs:
             span: auto
             type: fileupload
             commentAbove: 'Hier können Sie einen Anhang (z.B. Flyer als PDF) zur Veranstaltung hinzufügen.'
-            tab: 'Tab 2'
+            tab: Beschreibung
+        cost_fee:
+            label: Kostenbeitrag
+            oc.commentPosition: ''
+            span: auto
+            type: text
+            tab: Beschreibung
         person1:
             label: 'Person 1'
             oc.commentPosition: ''
             span: auto
             type: text
-            tab: 'Tab 3'
+            tab: Personen
         person2:
             label: 'Person 2'
             oc.commentPosition: ''
             span: auto
             type: text
-            tab: 'Tab 3'
+            tab: Personen
         person3:
             label: 'Person 3'
             oc.commentPosition: ''
             span: auto
             type: text
-            tab: 'Tab 3'
+            tab: Personen
         person4:
             label: 'Person 4'
             oc.commentPosition: ''
             span: auto
             type: text
-            tab: 'Tab 3'
+            tab: Personen
         person5:
             label: 'Person 5'
             oc.commentPosition: ''
             span: auto
             type: text
-            tab: 'Tab 3'
+            tab: Personen
         person6:
             label: 'Person 6'
             oc.commentPosition: ''
             span: auto
             type: text
-            tab: 'Tab 3'
+            tab: Personen

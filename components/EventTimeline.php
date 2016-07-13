@@ -10,7 +10,8 @@ use JumpLink\EventTimeline\Models\Event as EventModel;
 
 class EventTimeline extends ComponentBase
 {
-    public $events;
+    public $oldevents;
+    public $newevents;
 
     public function componentDetails()
     {
@@ -28,8 +29,11 @@ class EventTimeline extends ComponentBase
 
     public function onRun()
     {
-        $this->events = EventModel::where('date_end', '>=', date('Y-m-d H:i:s'))
-    ->orderBy('date_start', 'asc')
-    ->get();
+        $this->newevents = EventModel::where('date_start', '>=', date('Y-m-d H:i:s'))
+            ->orderBy('date_start', 'asc')
+            ->get();
+        $this->oldevents = EventModel::where('date_start', '<', date('Y-m-d H:i:s'))
+            ->orderBy('date_start', 'desc')
+            ->get();
     }
 }

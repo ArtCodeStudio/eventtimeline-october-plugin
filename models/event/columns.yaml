@@ -24,3 +24,13 @@ columns:
         type: text
         searchable: true
         sortable: true
+    date_start:
+        label: Beginn
+        type: datetime
+        searchable: true
+        sortable: true
+    date_end:
+        label: Ende
+        type: datetime
+        searchable: true
+        sortable: true

@@ -1,0 +1,6 @@
+fields:
+  timeline_page:
+    label: "Timeline Page"
+    comment: "die Seite, auf der die Timeline angezeigt wird (um Links in der Timeline-Overview-Komponente richtig zu setzen)"
+    type: dropdown
+    span: left

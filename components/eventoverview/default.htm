@@ -6,10 +6,14 @@
 {% for ev in __SELF__.events %}
     
     <p>
-        <a href="{{veranstaltungen | page}}#event_{{ ev.id }}">{{ ev.title }}</a> 
+
+        {# TODO: change this to __SELF.timelinePage (retrieved from backend settings)
+                 see EventOverview.php #}
+        <a href="{{__SELF__.property('timelinePage') | staticPage}}#event_{{ ev.id }}">{{ ev.title }}</a> 
         am {{ ev.date_start | date("d.m.Y, H:i") }} Uhr
     </p>
 
 {% endfor %}
   </div>
 </div>
+
