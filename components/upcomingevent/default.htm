@@ -1,7 +1,6 @@
 <div class="panel panel-default">
-  <div class="panel-heading">Aktuelles</div>
+  <div class="panel-heading">Nächste Veranstaltung</div>
   <div class="panel-body">
-    <p>Nächste Veranstaltung</p>
         {# TODO: change this to __SELF.timelinePage (retrieved from backend settings)
                  see EventOverview.php #}
         <a href="{{__SELF__.property('timelinePage') | staticPage}}#event_{{ __SELF__.upcoming.id }}">{{ __SELF__.upcoming.title }}</a> 

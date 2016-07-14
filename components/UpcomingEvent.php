@@ -31,8 +31,7 @@ class UpcomingEvent extends ComponentBase
     {
         $this->upcoming = EventModel::where('date_start', '>=', date('Y-m-d H:i:s'))
             ->orderBy('date_start', 'asc')
-            ->take(1)
-            ->get();
+            ->first();
     /*    $this->current = EventModel::where('date_end', '>=', date('Y-m-d H:i:s'))
             ->orderBy('date_start', 'asc')
             ->take(1)
