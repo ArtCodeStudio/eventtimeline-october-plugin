@@ -13,6 +13,8 @@ class Event extends Model
      * Validation
      */
     public $rules = [
+        'title'     => 'required|min:2|max:96',
+        'date_start'    => 'required',
     ];
 
     public $attachOne = [

@@ -1,156 +1,246 @@
+<span class="anchor" id="newevents"></span>
+
 <ul class="timeline">
-    {# TODO orderBy:'from' #}
-    {% for event in __SELF__.events %}
+
+    {% for event in __SELF__.newevents %}
   
-        <li class="{% if loop.index is divisible by(2) %} timeline-inverted {% endif %}">
-            {# Timeline type #}
-            
-            {# Vortrag #}
-            {% if event.type == 1 %}
-                <div class="timeline-badge success">
-                    <i class="fa fa-graduation-cap"></i>
-                </div>
-    
-            {# Podiumsdisskusion #}
-            {% elseif event.type == 2 %}
-                <div class="timeline-badge warning">
-                    <i class="fa fa-users"></i>
-                </div>
-    
-            {# Reise #}
-            {% elseif event.type == 3 %}
-                <div class="timeline-badge primary">
-                    <i class="fa fa-ship"></i>
-                </div>
-    
-            {# Information #}
-            {% elseif event.type == 4 %}
-                <div class="timeline-badge info">
-                    <i class="fa fa-info"></i>
-                </div>
-                
-    
-            {# Schifffahrtsessen #}
-            {% elseif event.type == 5 %}
-                <div class="timeline-badge danger">
-                    <i class="fa fa-cutlery"></i>
-                </div>
-                
-            {# Anderes #}
-            {% else %}
-                <div class="timeline-badge">
-                    <i class="fa fa-square"></i>
-                </div>
-    
+    <li class="m-b-3">
+
+        <span class="anchor" id ="timeline-event-{{event.id}}"></span>
+
+        <div class="timeline-badge primary">
+        </div>
+
+
+        <div class="timeline-panel">
+
+            {% if event.title %}
+                <h4 class="timeline-title m-b-2">
+                    {{ event.title }}
+                    {% if event.subtitle %}
+                        <small class="m-l-1">
+                            {{ event.subtitle }}
+                        </small>
+                    {% endif %}   
+                </h4>
+            {% endif %}
+            <div class="media" style="overflow: hidden">
+
+            {% if event.image %}
+                    <img src="{{ event.image.path | app }}" alt="{{ event.image.title }}" class="timeline-image half-width hidden-md-up hidden-xs-down pull-right">
             {% endif %}
 
 
-            <div class="anchor-static-navbar" id="event_{{event.id}}"></div>
-            <div class="timeline-panel">
-                <div class="timeline-heading">
-                
-                    {% if event.title %}
-                        <h4 class="timeline-title">
-                            {{ event.title }}
-                            {% if event.subtitle %}
-                                <small>
-                                    {{ event.subtitle }}
-                                </small>
-                            {% endif %}   
-                        </h4>
-                    {% endif %}
-                    
-                    {% if event.person1 %}
-                        <p class="text-muted">
-                            <i class="fa fa-user"></i>
-                            <span>
-                                {{ event.person1 }}
-                            </span>
-                        </p>
-                    {% endif %}
-                    {% if event.person2 %}
-                        <p class="text-muted">
-                            <i class="fa fa-user"></i>
-                            <span>
-                                {{ event.person2 }}
-                            </span>
-                        </p>
-                    {% endif %}
-                    {% if event.person3 %}
-                        <p class="text-muted">
-                            <i class="fa fa-user"></i>
-                            <span>
-                                {{ event.person3 }}
-                            </span>
-                        </p>
-                    {% endif %}
-                    {% if event.person4 %}
-                        <p class="text-muted">
-                            <i class="fa fa-user"></i>
-                            <span>
-                                {{ event.person4 }}
-                            </span>
-                        </p>
-                    {% endif %}
-                    {% if event.person5 %}
-                        <p class="text-muted">
-                            <i class="fa fa-user"></i>
-                            <span>
-                                {{ event.person5 }}
-                            </span>
-                        </p>
-                    {% endif %}
-                    {% if event.person6 %}
-                        <p class="text-muted">
-                            <i class="fa fa-user"></i>
-                            <span>
-                                {{ event.person6 }}
-                            </span>
-                        </p>
-                    {% endif %}
-
-
-
+                <div class="timeline-info media-left m-b-2">
+               
+                    <dl class="row">
                     {# Von bis (User) TODO amDateFormat:'dddd Do MMMM YYYY, HH:mm' #}
                     {% if event.date_start %}
-                        <p class="text-muted">
-                            <i class="fa fa-clock-o"></i>
+                        <dt class="col-xs-3">Zeit</dt>
+                        <dd class="col-xs-9">
                             <span>
                                 {{ event.date_start | date("d.m.Y, H:i") }} Uhr
                             </span>
-                            {% if event.date_end %}
-                                <span>
-                                    bis {{ event.date_end | date("d.m.Y, H:i") }} Uhr
-                                </span>
-                            {% endif %}   
-                        </p>
+                        {% if event.date_end %}
+                            bis
+                            <span style="white-space: nowrap">
+                                {% if ( ( event.date_end | date("D.m.Y") ) == ( event.date_start | date("D.m.Y") ) ) %}
+                                    {{event.date_end | date("H:i")}}
+                                {% else %}
+                                {{ event.date_end | date("d.m.Y, H:i") }} Uhr
+                                {% endif %}
+                            </span>
+                        {% endif %}
+                        </dd>
                     {% endif %}
-                    
+
                     {% if event.location %}
-                        <p class="text-muted">
-                            <i class="fa fa-home"></i>
-                            <a href="https://maps.google.com?q={{ event.location }}">
+                        <dt class="col-xs-3">Ort</dt>
+                        <dd class="col-xs-9">
+                            <a class="text-muted" href="https://maps.google.com?q={{ event.location }}">
                                 {{ event.location }}
                             </a>
-                        </p>
+                        </dd>
                     {% endif %}  
-                </div>
-                <div class="timeline-body">
-                    {% if event.image %}
-                        <img src="{{ event.image.path | app }}" alt="{{ event.image.title }}" class="img-responsive center-block m-t-1">
+
+                    {% if event.person1 or event.person2 or event.person3 or event.person4 or event.person5 or event.person6 %}
+                        <dt class="col-xs-3">Sprecher</dt>
+                        <dd class="col-xs-9 text-muted">
+                        {% if event.person1 %}
+                                    {{ event.person1 }}<br>
+                        {% endif %}
+                        {% if event.person2 %}
+                                    {{ event.person2 }}<br>
+                        {% endif %}
+                        {% if event.person3 %}
+                                    {{ event.person3 }}<br>
+                        {% endif %}
+                        {% if event.person4 %}
+                                    {{ event.person4 }}<br>
+                        {% endif %}
+                        {% if event.person5 %}
+                                    {{ event.person5 }}<br>
+                        {% endif %}
+                        {% if event.person6 %}
+                                    {{ event.person6 }}<br>
+                        {% endif %}
+                        </dd>
                     {% endif %}
-                    {% if event.description %}
-                        <p class="p-x-1">
-                            {{ event.description }}
-                        </p>
-                    {% endif %}  
-                    {% if event.attachment %}
-                        <p class="m-x-1">
-                            <a href="{{event.attachment.path | app}}" class="btn btn-info">Weitere Informationen</a>
-                        </p>
-                    {% endif %}  
+
+                    {% if event.cost_fee %}
+                        <dt class="col-xs-3">
+                            Kostenbeitrag
+                        </dt>
+                        <dd class="col-xs-9 text-muted">
+                                {{ event.cost_fee }}
+                        </dd>
+                    {% endif %}
+
+                    </dl>
+
                 </div>
+
+
+            {% if event.image %}
+                <img src="{{ event.image.path | app }}" alt="{{ event.image.title }}" class="timeline-image full-width hidden-sm-up m-y-1">
+            {% endif %}
+            {% if event.description %}
+                <p class="timeline-text m-t-2">{{ event.description }}
+                </p>
+            {% endif %}
+            {% if event.attachment %}
+                <p class="m-t-1">
+                    <a href="{{event.attachment.path | app}}" class="btn btn-outline-danger"><strong>weitere Informationen</strong></a>
+                </p>
+            {% endif %}
             </div>
-        {% endfor %}
+        </div>
+    {% if event.image %}
+        <img class="timeline-image third-width hidden-sm-down m-t-1" src="{{ event.image.path | app }}" alt="{{ event.image.title }}">
+    {% endif %}
     </li>
+{% endfor %}
+</ul>
+
+<h2><span class="anchor" id="oldevents"></span>Vergangene Veranstaltungen / Archiv</h2>
+<hr>
+
+<ul class="timeline">
+    {% for event in __SELF__.oldevents %}
+    
+    <li class="m-b-3">
+        <span class="anchor" id ="timeline-event-{{event.id}}"></span>
+
+        <div class="timeline-badge primary">
+        </div>
+
+
+        <div class="timeline-panel">
+
+            {% if event.title %}
+                <h4 class="timeline-title m-b-2">
+                    {{ event.title }}
+                    {% if event.subtitle %}
+                        <small class="m-l-1">
+                            {{ event.subtitle }}
+                        </small>
+                    {% endif %}   
+                </h4>
+            {% endif %}
+            <div class="media">
+
+            {% if event.image %}
+                    <img src="{{ event.image.path | app }}" alt="{{ event.image.title }}" class="timeline-image half-width hidden-md-up hidden-xs-down pull-right">
+            {% endif %}
+
+
+                <div class="timeline-info media-left m-b-2">
+               
+                    <dl class="row">
+                    {# Von bis (User) TODO amDateFormat:'dddd Do MMMM YYYY, HH:mm' #}
+                    {% if event.date_start %}
+                        <dt class="col-xs-3">Zeit</dt>
+                        <dd class="col-xs-9">
+                            <span>
+                                {{ event.date_start | date("d.m.Y, H:i") }} Uhr
+                            </span>
+                        {% if event.date_end %}
+                            bis
+                            <span class="nowrap">
+                                {% if ( ( event.date_end | date("D.m.Y") ) == ( event.date_start | date("D.m.Y") ) ) %}
+                                    {{event.date_end | date("H:i")}}
+                                {% else %}
+                                {{ event.date_end | date("d.m.Y, H:i") }} Uhr
+                                {% endif %}
+                            </span>
+                        {% endif %}
+                        </dd>
+                    {% endif %}
+
+                    {% if event.location %}
+                        <dt class="col-xs-3">Ort</dt>
+                        <dd class="col-xs-9">
+                            <a class="text-muted" href="https://maps.google.com?q={{ event.location }}">
+                                {{ event.location }}
+                            </a>
+                        </dd>
+                    {% endif %}  
+
+                    {% if event.person1 or event.person2 or event.person3 or event.person4 or event.person5 or event.person6 %}
+                        <dt class="col-xs-3">Sprecher</dt>
+                        <dd class="col-xs-9 text-muted">
+                        {% if event.person1 %}
+                                    {{ event.person1 }}<br>
+                        {% endif %}
+                        {% if event.person2 %}
+                                    {{ event.person2 }}<br>
+                        {% endif %}
+                        {% if event.person3 %}
+                                    {{ event.person3 }}<br>
+                        {% endif %}
+                        {% if event.person4 %}
+                                    {{ event.person4 }}<br>
+                        {% endif %}
+                        {% if event.person5 %}
+                                    {{ event.person5 }}<br>
+                        {% endif %}
+                        {% if event.person6 %}
+                                    {{ event.person6 }}<br>
+                        {% endif %}
+                        </dd>
+                    {% endif %}
+
+                    {% if event.cost_fee %}
+                        <dt class="col-xs-3">
+                            Kostenbeitrag
+                        </dt>
+                        <dd class="col-xs-9 text-muted">
+                                {{ event.cost_fee }}
+                        </dd>
+                    {% endif %}
+
+                    </dl>
+
+                </div>
+
+
+            {% if event.image %}
+                <img src="{{ event.image.path | app }}" alt="{{ event.image.title }}" class="timeline-image full-width hidden-sm-up m-y-1">
+            {% endif %}
+            {% if event.description %}
+                <p class="timeline-text m-t-2">{{ event.description }}
+                </p>
+            {% endif %}
+            {% if event.attachment %}
+                <p class="m-t-1">
+                    <a href="{{event.attachment.path | app}}" class="btn btn-outline-danger"><strong>weitere Informationen</strong></a>
+                </p>
+            {% endif %}
+            </div>
+        </div>
+    {% if event.image %}
+        <img class="timeline-image third-width hidden-sm-down m-t-1" src="{{ event.image.path | app }}" alt="{{ event.image.title }}">
+    {% endif %}
+    </li>
+{% endfor %}
 </ul>

@@ -1,0 +1,10 @@
+name: Events
+form: $/jumplink/eventtimeline/models/event/fields.yaml
+modelClass: JumpLink\EventTimeline\Models\Event
+defaultRedirect: jumplink/eventtimeline/events
+create:
+    redirect: 'jumplink/eventtimeline/events/update/:id'
+    redirectClose: jumplink/eventtimeline/events
+update:
+    redirect: jumplink/eventtimeline/events
+    redirectClose: jumplink/eventtimeline/events

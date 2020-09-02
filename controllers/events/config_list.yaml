@@ -9,3 +9,6 @@ toolbar:
     buttons: list_toolbar
     search:
         prompt: 'backend::lang.list.search_prompt'
+defaultSort:
+    column: date_start
+    direction: desc

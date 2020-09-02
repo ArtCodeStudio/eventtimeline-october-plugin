@@ -2,6 +2,8 @@
 
 use System\Classes\PluginBase;
 
+use System\Classes\SettingsManager;
+
 class Plugin extends PluginBase
 {
     public function registerComponents()
@@ -19,8 +21,18 @@ class Plugin extends PluginBase
 	       '\JumpLink\EventTimeline\Components\EventOverview' => 'eventoverview',
 	    ];
     }
-
-    public function registerSettings()
-    {
-    }
+	public function registerSettings()
+	{
+	    return [
+	        'settings' => [
+	            'label'       => 'EventTimeline-Einstellungen',
+	            'description' => 'Konfiguriere die Einstellungen der Event-Timeline.',
+	            'category'    => SettingsManager::CATEGORY_CMS,
+	            'icon'        => 'icon-cog',
+	            'class'       => 'JumpLink\EventTimeline\Models\Settings',
+	            'order'       => 500,
+	            'keywords'    => 'event timeline settings'
+	        ]
+	    ];
+	}
 }

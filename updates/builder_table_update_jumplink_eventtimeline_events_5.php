@@ -3,13 +3,13 @@
 use Schema;
 use October\Rain\Database\Updates\Migration;
 
-class BuilderTableUpdateJumplinkEventtimelineEvents3 extends Migration
+class BuilderTableUpdateJumplinkEventtimelineEvents5 extends Migration
 {
     public function up()
     {
         Schema::table('jumplink_eventtimeline_events', function($table)
         {
-            $table->string('link');
+            $table->string('cost_fee', 255)->nullable()->unsigned(false)->default(null)->change();
         });
     }
     
@@ -17,7 +17,7 @@ class BuilderTableUpdateJumplinkEventtimelineEvents3 extends Migration
     {
         Schema::table('jumplink_eventtimeline_events', function($table)
         {
-            $table->dropColumn('link');
+            $table->decimal('cost_fee', 10, 0)->nullable()->unsigned(false)->default(null)->change();
         });
     }
 }

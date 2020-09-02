@@ -1,15 +1,24 @@
-<div class="panel panel-default">
-  <div class="panel-heading">Aktuelles</div>
-  <div class="panel-body">
-    <p> Veranstaltungen im Überblick</p>
-    
-{% for ev in __SELF__.events %}
-    
-    <p>
-        <a href="{{veranstaltungen | page}}#event_{{ ev.id }}">{{ ev.title }}</a> 
-        am {{ ev.date_start | date("d.m.Y, H:i") }} Uhr
-    </p>
 
-{% endfor %}
+
+<h5 class="m-t-2">im Überblick <small id="test-xs" class="hidden-xs-down"></small></h5>
+<div class="row">
+{% for event in __SELF__.events %}
+  <div class="col-sm-6 col-md-4">
+    <a href="{{ __SELF__.property('timelinePage') }}#timeline-event-{{event.id}}">
+      <div class="timeline-overview background-box ratio-2-1 m-b-2" style="background-image: url('{{event.image.path | app}}');">
+          <span class="span-cover white"></span>
+          <span class="span-cover link"></span>
+          <div class="timeline-overview-bottom">
+            <h6 class="timeline-title p-x-1">{{ event.title }}</h6>
+        <!--    <div class="timeline-preview-text">
+              <div class="p-x-1">{{ event.description }}</div>
+            </div>
+            <span class="btn btn-outline-danger"><strong>weitere Informationen</strong></span>
+              <span class="fade-overlay"></span> -->
+            <small class="timeline-overview-date p-x-1">{{ event.date_start | date("d.m.Y") }}</small>
+          </div>
+      </div>
+    </a>
   </div>
+{% endfor %}
 </div>
