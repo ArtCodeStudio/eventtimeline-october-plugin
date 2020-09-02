@@ -10,7 +10,8 @@ class Plugin extends PluginBase
     {
         return [
             'JumpLink\EventTimeline\Components\EventTimeline' => 'eventtimeline',
-            'JumpLink\EventTimeline\Components\EventOverview' => 'eventoverview'
+            'JumpLink\EventTimeline\Components\EventOverview' => 'eventoverview',
+            'JumpLink\EventTimeline\Components\UpcomingEvent' => 'upcomingevent'
         ];
     }
 
@@ -19,6 +20,7 @@ class Plugin extends PluginBase
 	    return [
 	       '\JumpLink\EventTimeline\Components\EventTimeline' => 'eventtimeline',
 	       '\JumpLink\EventTimeline\Components\EventOverview' => 'eventoverview',
+            'JumpLink\EventTimeline\Components\UpcomingEvent' => 'upcomingevent'
 	    ];
     }
 	public function registerSettings()

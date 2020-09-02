@@ -21,7 +21,6 @@ class Settings extends Model{
     public function getTimelinePageOptions()
     {
     	return  StaticPage::sortBy('baseFileName')->lists('baseFileName', 'baseFileName');
-
     }
 
 } 
